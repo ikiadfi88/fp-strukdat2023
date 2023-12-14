@@ -15,39 +15,39 @@ using namespace std;
 
 class MenuComponent {
 public:
-    virtual void display() const = 0;
-    virtual double getPrice() const = 0;
+    virtual void infoMamin() const = 0;
+    virtual double infoHarga() const = 0;
     virtual ~MenuComponent() {}
 };
 
 class MenuItem : public MenuComponent {
 private:
     int itemId;
-    string itemName;
-    double itemPrice;
+    string itemNama;
+    double itemHarga;
 
 public:
-    MenuItem(int id, string name, double price) : itemId(id), itemName(name), itemPrice(price) {}
+    MenuItem(int id, string name, double harga) : itemId(id), itemNama(name), itemHarga(harga) {}
 
-    void display() const override {
-        cout << "- " << itemName << " (ID: " << itemId << "), Price: Rp" << fixed << setprecision(3) << itemPrice << endl;
+    void infoMamin() const override {
+        cout << "- " << itemNama << " (ID: " << itemId << "), Harga: Rp" << fixed << setprecision(3) << itemHarga << endl;
     }
 
-    double getPrice() const override {
-        return itemPrice;
+    double infoHarga() const override {
+        return itemHarga;
     }
 };
 
-class Order : public MenuComponent {
+class Pesen : public MenuComponent {
 private:
     int orderId;
     time_t timestamp;
     vector<MenuComponent*> items;
 
 public:
-    Order(int id) : orderId(id), timestamp(time(nullptr)) {}
+    Pesen(int id) : orderId(id), timestamp(time(nullptr)) {}
 
-    int getOrderId() const {
+    int getPesenId() const {
         return orderId;
     }
 
@@ -59,20 +59,20 @@ public:
         items.push_back(item);
     }
 
-    void display() const override {
+    void infoMamin() const override {
         struct tm* localTime = localtime(&timestamp);
-        cout << "\nOrder ID: " << orderId << ", Timestamp: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << endl;
+        cout << "\nPesen ID: " << orderId << ", Timestamp: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << endl;
         cout << "Items:" << endl;
         for (const MenuComponent* item : items) {
-            item->display();
+            item->infoMamin();
         }
         cout << endl;
     }
 
-    double getPrice() const override {
+    double infoHarga() const override {
         double total = 0.0;
         for (const MenuComponent* item : items) {
-            total += item->getPrice();
+            total += item->infoHarga();
         }
         return total;
     }
@@ -93,10 +93,10 @@ public:
     }
 };
 
-class CafeOrderSystem {
+class CafePesenSystem {
 private:
     vector<MenuComponent*> orders;
-    queue<Order*> orderQueue;
+    queue<Pesen*> orderQueue;
     int orderCounter;
     MenuGraph menuGraph;
 
@@ -105,16 +105,16 @@ public:
         return menuGraph;
     }
 
-    CafeOrderSystem() : orderCounter(1) {}
+    CafePesenSystem() : orderCounter(1) {}
 
-    ~CafeOrderSystem() {
-        for (MenuComponent* order : orders) {
-            delete order;
+    ~CafePesenSystem() {
+        for (MenuComponent* pesen : orders) {
+            delete pesen;
         }
     }
 
-    void createOrder() {
-        Order* order = new Order(orderCounter++);
+    void createPesen() {
+        Pesen* pesen = new Pesen(orderCounter++);
         int choice;
         bool addMoreItems = true;
 
@@ -141,9 +141,9 @@ public:
             cin >> itemId;
 
             if (itemId >= 1 && itemId <= 15) {
-                MenuItem* newItem = new MenuItem(itemId, getMenuName(itemId), getMenuPrice(itemId));
-                order->addItem(newItem);
-                menuGraph.addEdge(order, newItem, order->getOrderId());
+                MenuItem* newItem = new MenuItem(itemId, getNamaMenu(itemId), getMenuHarga(itemId));
+                pesen->addItem(newItem);
+                menuGraph.addEdge(pesen, newItem, pesen->getPesenId());
             } else {
                 cout << "ID item tidak valid. Silakan pilih ID item yang valid." << endl;
             }
@@ -158,33 +158,41 @@ public:
             }
         }
 
-        orders.push_back(order);
-        orderQueue.push(order);
-        cout << "Pesanan berhasil dibuat. ID Pesanan: " << order->getOrderId() << endl;
+        orders.push_back(pesen);
+        orderQueue.push(pesen);
+        cout << "Pesanan berhasil dibuat. ID Pesanan: " << pesen->getPesenId() << endl;
     }
 
-    void displayOrdersQueue() const {
+    void infoMaminPesensQueue() const {
+        if (!orderQueue.empty()) {
         cout << "\nAntrian Pesanan:" << endl;
-        queue<Order*> tempQueue = orderQueue;
+        queue<Pesen*> tempQueue = orderQueue;
         while (!tempQueue.empty()) {
-            tempQueue.front()->display();
+            tempQueue.front()->infoMamin();
             tempQueue.pop();
         }
+    } else {
+    }
     }
 
-    void displayOrders() const {
-        cout << "\nDaftar Pesanan:" << endl;
-        for (const MenuComponent* order : orders) {
-            order->display();
-            cout << "Total Harga: Rp" << fixed << setprecision(3) << order->getPrice() << endl;
+    void infoMaminPesens() const {
+        if (orders.empty() && orderQueue.empty()) {
+            cout << "Belum ada pesanan. Silakan tambahkan pesanan terlebih dahulu." << endl;
+        } else {
+            cout << "\nDaftar Pesanan:" << endl;
+            for (const MenuComponent* pesen : orders) {
+                pesen->infoMamin();
+                cout << "Total Harga: Rp" << fixed << setprecision(3) << pesen->infoHarga() << endl;
+            }
         }
     }
 
-    int getOrderCounter() const {
+
+    int getPesenCounter() const {
         return orderCounter;
     }
 
-    string getMenuName(int itemId) const {
+    string getNamaMenu(int itemId) const {
         switch (itemId) {
             case 1:
                 return "Nasi Goreng";
@@ -221,7 +229,7 @@ public:
         }
     }
 
-    double getMenuPrice(int itemId) const {
+    double getMenuHarga(int itemId) const {
         switch (itemId) {
             case 1:
                 return 20.000;
@@ -258,38 +266,48 @@ public:
         }
     }
 
-    void processOrders() {
+    void pesenanDiproses() {
         if (orderQueue.empty()) {
             cout << "Belum ada pesanan untuk diproses." << endl;
             return;
         }
 
         while (!orderQueue.empty()) {
-            Order* currentOrder = orderQueue.front();
+            Pesen* currentPesen = orderQueue.front();
             orderQueue.pop();
 
-            cout << "Memproses Pesanan ID " << currentOrder->getOrderId() << "..." << endl;
+            cout << "Memproses Pesanan ID " << currentPesen->getPesenId() << "..." << endl;
 
-            size_t itemCount = currentOrder->getItemCount();
+            size_t itemCount = currentPesen->getItemCount();
             int processingTime = itemCount * 2;
 
             this_thread::sleep_for(chrono::seconds(processingTime));
 
-            cout << "Pesanan ID " << currentOrder->getOrderId() << " selesai diproses." << endl;
+            cout << "Pesanan ID " << currentPesen->getPesenId() << " selesai diproses." << endl;
+        }
 
-            delete currentOrder;
+        // ini buat hapus pesenan setelah diproses
+        for (MenuComponent* pesen : orders) {
+            delete pesen;
+        }
+        orders.clear();
+        while (!orderQueue.empty()) {
+            orderQueue.pop();
         }
     }
+
+
+
 };
 
 int main() {
-    CafeOrderSystem cafeSystem;
+    CafePesenSystem cafeSystem;
 
     int choice;
     bool exitMenu = false;
 
     while (!exitMenu) {
-        cout << "\n===== Cafe Order System =====\n" << endl;
+        cout << "\n===== Cafe Pesen System =====\n" << endl;
         cout << "1. Tambah Pesanan" << endl;
         cout << "2. Tampilkan Pesanan" << endl;
         cout << "3. Proses Pesanan" << endl;
@@ -300,20 +318,20 @@ int main() {
 
         switch (choice) {
             case 1: {
-                cafeSystem.createOrder();
+                cafeSystem.createPesen();
                 break;
             }
             case 2: {
-                if (cafeSystem.getOrderCounter() > 1) {
-                    cafeSystem.displayOrders();
-                    cafeSystem.displayOrdersQueue();
+                if (cafeSystem.getPesenCounter() > 1) {
+                    cafeSystem.infoMaminPesens();
+                    cafeSystem.infoMaminPesensQueue();
                 } else {
                     cout << "Belum ada pesanan. Silakan tambahkan pesanan terlebih dahulu." << endl;
                 }
                 break;
             }
             case 3: {
-                cafeSystem.processOrders();
+                cafeSystem.pesenanDiproses();
                 break;
             }
             case 4: {
