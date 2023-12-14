@@ -11,7 +11,6 @@
 |Zidny Ilman Nafian|5027221039|
 
 ---
-### **I. SOAL 1<a name="soal1"></a>**
 **A. PEMBAHASAN**
 1. Pertama membuat fungsi untuk membuat cleaner.log, `buatlog` adalah fungsi yang digunakan untuk mencatat informasi tentang file yang dihapus ke dalam file .log. Fungsi ini menerima dua parameter: `path` dan `filename` yang merepresentasikan directory lengkap file yang dihapus. Fungsi ini menggunakan `time` untuk mendapatkan waktu saat ini dan `strftime` untuk mengonversi waktu menjadi format yang sesuai. Fungsi ini membuka file log /home/adfi/cleaner.log dalam mode tambahan ("a"), menulis informasi log, dan kemudian menutup file.
 
