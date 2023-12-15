@@ -167,7 +167,7 @@ A. Class `MenuItem`
 
 Metode `infoMamin() const override` ini adalah contoh overriding. Metode ini diambil dari kelas induk `(MenuComponent)` dan dideklarasikan kembali di kelas turunan `(MenuItem)`. Metode ini menggantikan metode yang sama dari kelas induk. Dalam kasus ini, `infoMamin()` memberikan informasi tentang item menu, dan implementasinya disesuaikan untuk kelas `MenuItem`. Metode `infoHarga() const override` ini juga merupakan overriding. Metode ini diambil dari kelas induk dan dideklarasikan kembali di kelas `MenuItem`. Fungsinya adalah mengembalikan harga item menu.
 
-    ```c++
+```c++
     class MenuItem : public MenuComponent {
     private:
         int itemId;
@@ -185,13 +185,13 @@ Metode `infoMamin() const override` ini adalah contoh overriding. Metode ini dia
             return itemHarga;
         }
     };
-    ```
+```
 
 B. Class `Pesen`
 
 Metode `infoMamin() const override` seperti pada kelas `MenuItem`, metode ini overriding metode yang sama dari kelas induk. Metode ini memberikan informasi tentang pesanan, termasuk ID pesanan, timestamp, dan item-item yang ada dalam pesanan. Setiap item di pesanan memanggil metode `infoMamin()`-nya sendiri. Metode `infoHarga() const override` juga merupakan overriding. Metode ini menghitung dan mengembalikan total harga dari semua item dalam pesanan dengan menjalankan `infoHarga()` pada setiap item.Metode getItemCount() const: Metode ini tidak ada di kelas induk `(MenuComponent)`. Ini adalah contoh penambahan metode yang tidak ada di kelas induk, menunjukkan bahwa program dapat menambahkan fungsionalitas tambahan pada kelas turunan tanpa mempengaruhi kelas induk.
 
-    ```c++
+```c++
     class Pesen : public MenuComponent {
     private:
         int orderId;
@@ -235,23 +235,23 @@ Metode `infoMamin() const override` seperti pada kelas `MenuItem`, metode ini ov
             return items.size();
         }
     };
-    ```
+```
 
 Terdapat dua versi dari fungsi addEdge pada class `MenuGraph`. Kedua versi tersebut menunjukkan implementasi overloading pada level fungsi:
  
 A. Fungsi addEdge dengan Tiga Parameter
 
-    ```c++
-    void addEdge(MenuComponent* menu1, MenuComponent* menu2, int weight)
-    ```
+```c++
+void addEdge(MenuComponent* menu1, MenuComponent* menu2, int weight)
+```
 
 Fungsi ini digunakan untuk menambahkan edge antara dua objek `MenuComponent` dan memberikan bobot (weight) yang diberikan. Ini adalah bentuk dasar dari fungsi `addEdge` yang menerima tiga parameter, yaitu dua objek `MenuComponent` dan sebuah bobot. Dalam kasus ini, edge diimplementasikan dalam bentuk adjacency list dengan bobot yang ditentukan.
 
 B. Fungsi addEdge dengan Dua Parameter
 
-    ```c++
-    void addEdge(MenuComponent* menu1, MenuComponent* menu2)
-    ```
+```c++
+void addEdge(MenuComponent* menu1, MenuComponent* menu2)
+```
 Fungsi ini juga merupakan versi dari `addEdge`, tetapi kali ini hanya menerima dua objek `MenuComponent` tanpa menyertakan bobot. Dalam hal ini, fungsi menetapkan bobot default untuk edge yang ditambahkan antara dua objek. Ini memberikan fleksibilitas untuk menambahkan edge tanpa harus menyertakan bobot secara eksplisit.
 
 Dengan adanya kedua versi fungsi addEdge ini, kita dapat dengan mudah menambahkan edge dengan atau tanpa bobot sesuai dengan kebutuhan kita. Dalam konteks ini, overloading memungkinkan kita menggunakan nama fungsi yang sama untuk tugas yang mirip tetapi dengan perbedaan dalam jumlah atau tipe parameter.
