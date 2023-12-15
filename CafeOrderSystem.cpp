@@ -84,14 +84,21 @@ public:
 
 class MenuGraph {
 private:
-    unordered_map<MenuComponent*, unordered_map<MenuComponent*, int>> adjacencyList;
+    std::unordered_map<MenuComponent*, std::unordered_map<MenuComponent*, int>> adjacencyList;
 
 public:
     void addEdge(MenuComponent* menu1, MenuComponent* menu2, int weight) {
         adjacencyList[menu1][menu2] = weight;
         adjacencyList[menu2][menu1] = weight;
     }
+
+    void addEdge(MenuComponent* menu1, MenuComponent* menu2) {
+        const int defaultWeight = 1;
+        adjacencyList[menu1][menu2] = defaultWeight;
+        adjacencyList[menu2][menu1] = defaultWeight;
+    }
 };
+
 
 class CafePesenSystem {
 private:
