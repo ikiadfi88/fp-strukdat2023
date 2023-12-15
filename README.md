@@ -346,24 +346,32 @@ Pada destruktor, `CafePesenSystem` membersihkan dan menghapus objek-objek pesana
 
 **B. HASIL**
 
-- Susunan directory sebelum program jalan
+- Tampilan program saat pertama kali dijalankan
 
-![Screenshot_2023-10-12_065825](/uploads/485586cadf324793a8a969a8953c3410/Screenshot_2023-10-12_065825.png)
+![awal mula](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/448cd2d1-2b81-4931-bdc2-5b64883354b3)
 
-![Screenshot_2023-10-12_065727](/uploads/74ae9fcf09a62728ae8415bb36f19cc5/Screenshot_2023-10-12_065727.png)
+- Tampilan program pada menu nomor 1
 
+![awal pg 1](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/40a6b49f-65e4-433a-98d3-4d11c47f047f)
 
-- Susunan directory setelah program jalan
+- Tampilan program pada menu nomor 2 jika tidak ada pesanan
 
-![Screenshot_2023-10-12_070719](/uploads/96a7bd05df5e7b547d87d7531a45a998/Screenshot_2023-10-12_070719.png)
+![awal pg 2](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/68a6ea32-8411-4bae-a016-37063e09bdf1)
 
-![Screenshot_2023-10-12_070739](/uploads/093cfb307650f6a128151e8f795d03f0/Screenshot_2023-10-12_070739.png)
+- Tampilan program noor 2 jika ada pesanan
 
-- cleaner.log
+![pg 2](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/590e1ff7-68f1-4b42-98c3-3fa26fd62f2b)
 
-![Screenshot_2023-10-12_070550](/uploads/6048f84d2a22db5be77b6d02ca07aae1/Screenshot_2023-10-12_070550.png)
+![pg 2 b](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/d30a93ad-a91c-49f2-aa45-ffde92431453)
 
+- Tampilan program pada menu nomor 3 jika tidak ada pesanan
 
-- Letak cleaner; cleaner.c; cleaner.log di /home/user
+![awal pg 3](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/d3f2a546-8e35-431d-b0db-e65fa095a6e0)
 
-![Screenshot_2023-10-12_070653](/uploads/ae85d3703959954b89761d884a1e5a02/Screenshot_2023-10-12_070653.png)
+- Tampilan program pada menu nomor 2 jika ada pesanan
+
+![pg 3](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/e33eda29-dfad-4aea-bb1f-e81e39d6dcf6)
+
+- Tampilan program pada menu nomor 4
+
+![pg 4](https://github.com/ikiadfi88/fp-strukdat2023/assets/120791817/22493ecb-185f-4097-8886-746059d560b6)
