@@ -15,7 +15,7 @@
 **A. PROBLEM**  
     Program Cafe Order System dirancang untuk menangani permasalahan manajemen pesanan di sebuah kafe. Dengan menyediakan fungsionalitas seperti penambahan pesanan baru, antrian pesanan, dan pemrosesan pesanan, program ini memungkinkan kafe untuk secara efisien mengelola pesanan pelanggan. Manajemen menu yang terintegrasi memungkinkan identifikasi hubungan antara pesanan dan item-menu, sementara antarmuka pengguna sederhana memberikan kemudahan dalam penggunaan program. Dengan implementasi ini, program memberikan solusi terstruktur untuk meningkatkan efisiensi dan akurasi dalam operasional sehari-hari kafe.
     
-**A. OVERVIEW PROGRAM**  
+**B. OVERVIEW PROGRAM**  
     Program Cafe Order System ini merupakan implementasi sederhana untuk manajemen pesanan di sebuah kafe. Program ini menggunakan konsep hierarki kelas dengan menggunakan pola desain komposit untuk merepresentasikan menu dan pesanan. Program juga memiliki struktur data antrian untuk mengelola pesanan yang harus diproses. Program memberikan fungsionalitas seperti penambahan pesanan, tampilan daftar pesanan, tampilan antrian pesanan, dan pemrosesan pesanan. Antarmuka pengguna sederhana diberikan melalui konsol dengan opsi untuk menambah pesanan, menampilkan pesanan, memproses pesanan, dan keluar dari program. Adapun hal-hal yang diimplementasikan pada program ini yaitu :  
 >1. Implementasi Class, Property, Method, Constructor, Destructor  
 >2. Implementasi Adjacency list / Adjacency Matrix  
@@ -207,11 +207,111 @@ public:
         adjacencyList[menu2][menu1] = defaultWeight;
     }
 };
-
 ```
 
+**3. Instansiasi Class**  
+Bagian yang melakukan instansiasi class terletak pada fungsi main(). Disitu, objek `CafePesenSystem cafeSystem`; dibuat, yang merupakan instansiasi dari `class CafePesenSystem`.
+Objek cafeSystem yang diinstansiasi digunakan untuk memanggil berbagai method seperti `createPesen()`, `infoMaminPesens()`, `infoMaminPesensQueue()`, dan `pesenanDiproses()`, sesuai dengan pilihan yang dimasukkan oleh pengguna melalui input.
+```c++
+int main() {
+    CafePesenSystem cafeSystem;
 
+    int choice;
+    bool exitMenu = false;
+}
+```
 
+**4. Implementasi Abstract Class**  
+`Class MenuComponent` adalah class abstract. `MenuComponent` teridentifikasi sebagai abstract class karena memiliki setidaknya satu fungsi virtual murni (pure virtual function). Di kelas ini, terdapat dua fungsi virtual murni, yaitu `infoMamin()` dan `infoHarga()`.
+```c++
+class MenuComponent {
+public:
+    virtual void infoMamin() const = 0;
+    virtual double infoHarga() const = 0;
+    virtual ~MenuComponent() {}
+};
+```
+
+**5. Implementasi Encapsulation: Public / Private / Protected**  
+Penggunaan akses modifier (private, public, protected), pembuatan fungsi-fungsi getter, dan penggunaan fungsi virtual murni pada program merupakan implementasi encapsulation dalam program. Dalam program ini terdapat anggota private yang hanya dapat diakses dari dalam class `MenuItem` diantaranya `itemId`, `itemNama`, dan `itemHarga`. Lalu terdapat anggota protected yang dapat diakses oleh kelas turunan dari class`Pesen` diantaranya `orderId`, `timestamp`, dan `items`.
+```c++
+class MenuItem : public MenuComponent {
+private:
+    int itemId;
+    string itemNama;
+    double itemHarga;
+
+public:
+    MenuItem(int id, string name, double harga) : itemId(id), itemNama(name), itemHarga(harga) {}
+
+    void infoMamin() const override {
+        cout << "- " << itemNama << " (ID: " << itemId << "), Harga: Rp" << fixed << setprecision(3) << itemHarga << endl;
+    }
+
+    double infoHarga() const override {
+        return itemHarga;
+    }
+};
+class Pesen : public MenuComponent {
+protected:
+    int orderId;
+    time_t timestamp;
+    vector<MenuComponent*> items;
+public:
+    Pesen(int id) : orderId(id), timestamp(time(nullptr)) {}
+
+    int getPesenId() const {
+        return orderId;
+    }
+
+    const time_t getTimestamp() const {
+        return timestamp;
+    }
+
+    void addItem(MenuComponent* item) {
+        items.push_back(item);
+    }
+
+    void infoMamin() const override {
+        struct tm* localTime = localtime(&timestamp);
+        cout << "\nPesen ID: " << orderId << ", Timestamp: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << endl;
+        cout << "Items:" << endl;
+        for (const MenuComponent* item : items) {
+            item->infoMamin();
+        }
+        cout << endl;
+    }
+
+    double infoHarga() const override {
+        double total = 0.0;
+        for (const MenuComponent* item : items) {
+            total += item->infoHarga();
+        }
+        return total;
+    }
+
+    size_t getItemCount() const {
+        return items.size();
+    }
+};
+```
+
+**6. Implementasi Inheritance: Single / Hierarchical / Multilevel**  
+- Single Inheritance : Kelas `MenuItem` dan `Pesen` mewarisi sifat-sifat dan perilaku dari kelas `MenuComponent`. Kedua kelas tersebut menggunakan single inheritance karena masing-masing hanya mewarisi dari satu kelas dasar (MenuComponent).
+- Hierarchical Inheritance : Kelas `MenuItem` dan `Pesen` berada di level yang sama dalam hierarki inheritance, keduanya mewarisi sifat-sifat dari kelas dasar yang sama, yaitu `MenuComponent`. Kedua kelas ini dapat disebut sebagai cabang-cabang dari kelas dasar yang sama.
+```c++
+// Single Inheritance pada Class "MenuItem" dan "Pesen"
+class MenuItem : public MenuComponent {
+};
+class Pesen : public MenuComponent {
+};
+// Hierarchical Inheritance pada Class "Pesen" dan "PesenBuilder"
+class PesenBuilder : public MenuComponent {
+};
+// Multilevel Inheritance pada Class "CafePesenSystem"
+class CafePesenSystem {
+};
+```
 
 7. Polimorfisme adalah konsep dalam pemrograman berorientasi objek di mana suatu objek dapat berperilaku sebagai objek dari kelas lain melalui warisan dan penggantian metode. Pada kode kami terdapat penggunaan overriding sebagai berikut:
 
