@@ -29,9 +29,9 @@
 **C. PENJELASAN IMPLEMENTASI PADA CODE**  
 
 **1. Implementasi Class, Property, Method, Constructor, Destructor**  
-a. Class  
+**a. Class**  
 Program ini memiliki 5 class yaitu : MenuComponent, MenuItem, Pesen, MenuGraph, dan CafePesenSystem.
-**Kelas MenuComponent**
+-Kelas MenuComponent
    <blockquote>
        Kelas abstrak ini berperan sebagai dasar untuk item menu dan pesanan.
        Fungsi Utama:
