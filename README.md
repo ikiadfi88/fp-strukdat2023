@@ -188,6 +188,29 @@ Dalam kelas CafePesenSystem, destructor bertanggung jawab untuk membersihkan mem
     }
 ```
 
+**2. Implementasi Adjacency list / Adjacency Matrix**  
+Dalam program ini, terdapat penggunaan adjacency list untuk merepresentasikan hubungan antara menu yang tersedia. Pada kelas MenuGraph, terdapat penggunaan adjacency list yang diimplementasikan dalam bentuk std::unordered_map. Struktur data ini digunakan untuk menyimpan informasi mengenai hubungan antara berbagai MenuComponent yang ada dalam program tetapi informasi ini tidak secara eksplisit ditampilkan kepada pengguna dalam bentuk adjacency list pada output program.
+```c++
+class MenuGraph {
+private:
+    std::unordered_map<MenuComponent*, std::unordered_map<MenuComponent*, int>> adjacencyList;
+
+public:
+    void addEdge(MenuComponent* menu1, MenuComponent* menu2, int weight) {
+        adjacencyList[menu1][menu2] = weight;
+        adjacencyList[menu2][menu1] = weight;
+    }
+
+    void addEdge(MenuComponent* menu1, MenuComponent* menu2) {
+        const int defaultWeight = 1;
+        adjacencyList[menu1][menu2] = defaultWeight;
+        adjacencyList[menu2][menu1] = defaultWeight;
+    }
+};
+
+```
+
+
 
 
 7. Polimorfisme adalah konsep dalam pemrograman berorientasi objek di mana suatu objek dapat berperilaku sebagai objek dari kelas lain melalui warisan dan penggantian metode. Pada kode kami terdapat penggunaan overriding sebagai berikut:
