@@ -16,7 +16,16 @@
     Program Cafe Order System dirancang untuk menangani permasalahan manajemen pesanan di sebuah kafe. Dengan menyediakan fungsionalitas seperti penambahan pesanan baru, antrian pesanan, dan pemrosesan pesanan, program ini memungkinkan kafe untuk secara efisien mengelola pesanan pelanggan. Manajemen menu yang terintegrasi memungkinkan identifikasi hubungan antara pesanan dan item-menu, sementara antarmuka pengguna sederhana memberikan kemudahan dalam penggunaan program. Dengan implementasi ini, program memberikan solusi terstruktur untuk meningkatkan efisiensi dan akurasi dalam operasional sehari-hari kafe.
     
 **A. OVERVIEW PROGRAM**  
-    Program Cafe Order System ini merupakan implementasi sederhana untuk manajemen pesanan di sebuah kafe. Program ini menggunakan konsep hierarki kelas dengan menggunakan pola desain komposit untuk merepresentasikan menu dan pesanan. Program juga memiliki struktur data antrian untuk mengelola pesanan yang harus diproses. Program memberikan fungsionalitas seperti penambahan pesanan, tampilan daftar pesanan, tampilan antrian pesanan, dan pemrosesan pesanan. Antarmuka pengguna sederhana diberikan melalui konsol dengan opsi untuk menambah pesanan, menampilkan pesanan, memproses pesanan, dan keluar dari program.
+    Program Cafe Order System ini merupakan implementasi sederhana untuk manajemen pesanan di sebuah kafe. Program ini menggunakan konsep hierarki kelas dengan menggunakan pola desain komposit untuk merepresentasikan menu dan pesanan. Program juga memiliki struktur data antrian untuk mengelola pesanan yang harus diproses. Program memberikan fungsionalitas seperti penambahan pesanan, tampilan daftar pesanan, tampilan antrian pesanan, dan pemrosesan pesanan. Antarmuka pengguna sederhana diberikan melalui konsol dengan opsi untuk menambah pesanan, menampilkan pesanan, memproses pesanan, dan keluar dari program. Adapun hal-hal yang diimplementasikan pada program ini yaitu :  
+    1. Implementasi Class, Property, Method, Constructor, Destructor  
+    2. Implementasi Adjacency list / Adjacency Matrix  
+    3. Instansiasi Class  
+    4. Implementasi Abstract Class  
+    5. Implementasi Encapsulation: Public / Private / Protected  
+    6. Implementasi Inheritance: Single / Hierarchical / Multilevel
+    7. Implementasi Polymorphism: Overriding dan Overloading
+    8. Implementasi Composition  
+    
     
 ```c++
 void buatlog(const char *path, const char *filename) {
