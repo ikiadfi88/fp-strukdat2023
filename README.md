@@ -24,7 +24,10 @@
 >5. Implementasi Encapsulation: Public / Private / Protected  
 >6. Implementasi Inheritance: Single / Hierarchical / Multilevel  
 >7. Implementasi Polymorphism: Overriding dan Overloading  
->8. Implementasi Composition  
+>8. Implementasi Composition
+
+**C. PENJELASAN IMPLEMENTASI PADA CODE**
+
     
     
 ```c++
@@ -44,7 +47,7 @@ void buatlog(const char *path, const char *filename) {
 
 2. Fungsi `carisuspicious` digunakan untuk mencari kata "SUSPICIOUS" dalam sebuah file. Fungsi ini menerima parameter `filename` yang adalah nama file yang akan diperiksa. Fungsi membuka file tersebut, membaca baris per baris, dan mencari kata "SUSPICIOUS" dalam setiap baris. Jika kata "SUSPICIOUS" ditemukan, maka fungsi akan mengembalikan 1; jika tidak ditemukan, maka akan mengembalikan 0.
 
-```c++
+
 int carisuspicious(const char *filename) {
     FILE *file = fopen(filename, "r");
     if (file == NULL) {
@@ -62,7 +65,7 @@ int carisuspicious(const char *filename) {
     fclose(file);
     return 0;
 }
-```
+
 
 3. Fungsi `folderbersih` ini digunakan untuk memeriksa apakah sebuah direktori bersih dari file yang mengandung kata "SUSPICIOUS" atau tidak. Fungsi ini menerima parameter `path`, yang adalah alamat direktori yang akan diperiksa. Fungsi membuka direktori tersebut dan memeriksa setiap file di dalamnya menggunakan fungsi `carisuspicious`. Jika ada file yang mengandung kata "SUSPICIOUS", variabel `hasSuspicious` akan diatur menjadi 1. Fungsi ini mengembalikan 1 jika direktori bersih (tidak ada file "SUSPICIOUS"), dan 0 jika tidak bersih.
 
