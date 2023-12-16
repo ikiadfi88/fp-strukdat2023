@@ -22,8 +22,8 @@
     3. Instansiasi Class  
     4. Implementasi Abstract Class  
     5. Implementasi Encapsulation: Public / Private / Protected  
-    6. Implementasi Inheritance: Single / Hierarchical / Multilevel
-    7. Implementasi Polymorphism: Overriding dan Overloading
+    6. Implementasi Inheritance: Single / Hierarchical / Multilevel  
+    7. Implementasi Polymorphism: Overriding dan Overloading  
     8. Implementasi Composition  
     
     
