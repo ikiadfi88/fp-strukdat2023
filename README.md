@@ -166,6 +166,27 @@ public:
 
 ```
 
+**b. Constructor dan Destructor**  
+- `Constructor CafePesenSystem` :
+Constructor adalah fungsi khusus yang dijalankan secara otomatis ketika sebuah objek dari kelas dibuat.
+Dalam kelas CafePesenSystem, constructor tidak mengambil argumen dan bertanggung jawab untuk menginisialisasi properti-properti kelas, seperti orderCounter, orders, orderQueue, dan menuGraph.
+Constructor dijalankan setiap kali objek CafePesenSystem baru dibuat. Constructor pada CafePesenSystem digunakan untuk menginisialisasi beberapa properti dan struktur data yang digunakan dalam sistem manajemen pesanan. Constructor (CafePesenSystem()) diinisialisasi dengan orderCounter yang diatur ke nilai awal 1 tanpa parameter.
+```c++
+public:
+    // Constructor
+    CafePesenSystem() : orderCounter(1) {}
+```
+
+- `Destructor CafePesenSystem` :
+Destructor merupakan fungsi yang dipanggil secara otomatis ketika objek dari suatu kelas dihapus.
+Dalam kelas CafePesenSystem, destructor bertanggung jawab untuk membersihkan memori dari objek-objek yang dialokasikan secara dinamis yang disimpan dalam vektor orders. Destructor melakukan perulangan melalui vektor orders dan menghapus setiap MenuComponent yang dialokasikan dinamis dengan operator delete. 
+```c++
+    ~CafePesenSystem() {
+        for (MenuComponent* pesen : orders) {
+            delete pesen;
+        }
+    }
+```
 
 
 
