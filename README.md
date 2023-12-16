@@ -29,16 +29,42 @@
 **C. PENJELASAN IMPLEMENTASI PADA CODE**  
 
 **1. Implementasi Class, Property, Method, Constructor, Destructor**  
-**a. Class**  
+**a. Class, Property, dan Method**  
 Program ini memiliki 5 class yaitu : MenuComponent, MenuItem, Pesen, MenuGraph, dan CafePesenSystem.  
 - `MenuComponent` :
-Kelas abstrak ini berperan sebagai dasar untuk item menu dan pesanan. Memiliki 2 fungsi utama yaitu infoMamin(): Fungsi virtual murni yang bertujuan menampilkan informasi dari item menu atau pesanan dan infoHarga(): Fungsi virtual murni yang mengembalikan nilai harga dari item menu atau pesanan.
+Kelas abstrak ini berperan sebagai dasar untuk item menu dan pesanan. Memiliki 2 fungsi utama yaitu infoMamin(): Fungsi virtual murni yang bertujuan menampilkan informasi dari item menu atau pesanan dan infoHarga(): Fungsi virtual murni yang mengembalikan nilai harga dari item menu atau pesanan. Class ini tidak memiliki property.
 ```c++
 class MenuComponent {
 public:
     virtual void infoMamin() const = 0;
     virtual double infoHarga() const = 0;
     virtual ~MenuComponent() {}
+};
+```
+
+- `MenuItem` :
+Mewakili item individu dalam menu.
+Properti & Metode Utama:
+Properti: itemId (ID item), itemNama (nama item), itemHarga (harga item).
+Metode: infoMamin() untuk menampilkan informasi item dan infoHarga() untuk mendapatkan harga item.
+Fungsionalitas: Mencatat informasi tentang setiap item dalam menu.
+```c++
+class MenuItem : public MenuComponent {
+private:
+    int itemId;
+    string itemNama;
+    double itemHarga;
+
+public:
+    MenuItem(int id, string name, double harga) : itemId(id), itemNama(name), itemHarga(harga) {}
+
+    void infoMamin() const override {
+        cout << "- " << itemNama << " (ID: " << itemId << "), Harga: Rp" << fixed << setprecision(3) << itemHarga << endl;
+    }
+
+    double infoHarga() const override {
+        return itemHarga;
+    }
 };
 ```
 
