@@ -43,7 +43,7 @@ public:
 ```
 
 - `MenuItem` :
-Mewakili item individu dalam menu. Memiliki property yaitu itemId (ID item), itemNama (nama item), dan itemHarga (harga item). Memiliki method infoMamin() untuk menampilkan informasi item dan infoHarga() untuk mendapatkan harga item. Class ini berfungsi untuk mencatat informasi tentang setiap item dalam menu.
+Mewakili item individu dalam menu. Memiliki property yaitu 'itemId' (ID item), 'itemNama' (nama item), dan 'itemHarga' (harga item). Memiliki method 'infoMamin()' untuk menampilkan informasi item dan 'infoHarga()' untuk mendapatkan harga item. Class ini berfungsi untuk mencatat informasi tentang setiap item dalam menu.
 ```c++
 class MenuItem : public MenuComponent {
 private:
@@ -63,6 +63,109 @@ public:
     }
 };
 ```
+
+- `MenuComponent` :
+Mewakili pesanan yang terdiri dari beberapa item-menu. Memiliki property yaitu 'orderId' (ID pesanan), 'timestamp' (waktu pesanan dibuat), dan 'items' (vektor item-menu dalam pesanan). Memiliki method 'addItem()' untuk menambahkan item ke dalam pesanan, 'infoMamin()' untuk menampilkan detail pesanan, dan 'infoHarga()' untuk mendapatkan total harga pesanan. Class ini berfungsi untuk merepresentasikan pesanan dengan item-menu terkait dan menghitung total harga pesanan.
+```c++
+class Pesen : public MenuComponent {
+private:
+    int orderId;
+    time_t timestamp;
+    vector<MenuComponent*> items;
+
+public:
+    Pesen(int id) : orderId(id), timestamp(time(nullptr)) {}
+
+    int getPesenId() const {
+        return orderId;
+    }
+
+    const time_t getTimestamp() const {
+        return timestamp;
+    }
+
+    void addItem(MenuComponent* item) {
+        items.push_back(item);
+    }
+
+    void infoMamin() const override {
+        struct tm* localTime = localtime(&timestamp);
+        cout << "\nPesen ID: " << orderId << ", Timestamp: " << put_time(localTime, "%Y-%m-%d %H:%M:%S") << endl;
+        cout << "Items:" << endl;
+        for (const MenuComponent* item : items) {
+            item->infoMamin();
+        }
+        cout << endl;
+    }
+
+    double infoHarga() const override {
+        double total = 0.0;
+        for (const MenuComponent* item : items) {
+            total += item->infoHarga();
+        }
+        return total;
+    }
+
+    size_t getItemCount() const {
+        return items.size();
+    }
+};
+```
+
+- `MenuGraph` :
+Menyediakan representasi grafik sederhana untuk hubungan antara komponen menu. Memiliki property 'adjacencyList' (map untuk merepresentasikan keterhubungan antara komponen menu). Memiliki Method 'addEdge()' untuk menambahkan hubungan antara dua komponen menu ke dalam grafik. Class ini berfungsi untuk mencatat keterhubungan antara item-menu (atau pesanan) dalam bentuk grafik sederhana.
+```c++
+class MenuGraph {
+private:
+    unordered_map<MenuComponent*, unordered_map<MenuComponent*, int>> adjacencyList;
+
+public:
+    void addEdge(MenuComponent* menu1, MenuComponent* menu2, int weight = 1) {
+        adjacencyList[menu1][menu2] = weight;
+        adjacencyList[menu2][menu1] = weight;
+    }
+};
+```
+
+- `CafePesenSystem` :
+Mengelola fungsi-fungsi utama program untuk membuat, menampilkan, dan memproses pesanan di kafe. Memiliki property 'orders' (vektor pesanan yang telah dibuat), 'orderQueue' (antrean pesanan), 'orderCounter' (hitungan untuk ID pesanan), dan 'menuGraph' (grafik keterhubungan menu). Memiliki method 'createPesen()' untuk membuat pesanan baru, 'infoMaminPesens()' dan 'infoMaminPesensQueue()' untuk menampilkan daftar pesanan, serta 'pesenanDiproses()' untuk memproses pesanan yang telah dibuat.Class ini berfungsi untuk  menangani operasi utama seperti pembuatan pesanan, tampilan daftar pesanan, dan pemrosesan pesanan di kafe.
+```c++
+class CafePesenSystem {
+private:
+    vector<MenuComponent*> orders;
+    queue<Pesen*> orderQueue;
+    int orderCounter;
+    MenuGraph menuGraph;
+
+public:
+    const MenuGraph& getMenuGraph() const {
+        return menuGraph;
+    }
+
+    CafePesenSystem() : orderCounter(1) {}
+
+    ~CafePesenSystem() {
+        for (MenuComponent* pesen : orders) {
+            delete pesen;
+        }
+    }
+    void createPesen(); // Membuat pesanan baru
+
+    void infoMaminPesensQueue() const; // Menampilkan antrean pesanan
+
+    void infoMaminPesens() const; // Menampilkan daftar pesanan
+
+    int getPesenCounter() const; // Mendapatkan hitungan pesanan
+
+    string getNamaMenu(int itemId) const; // Mendapatkan nama item berdasarkan ID
+
+    double getMenuHarga(int itemId) const; // Mendapatkan harga item berdasarkan ID
+
+    void pesenanDiproses(); // Memproses pesanan yang ada
+};
+
+```
+
 
 
 
