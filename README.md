@@ -7,8 +7,8 @@
 |Nama|NRP  |
 |--|--|
 |Iki Adfi Nur Mohamad|5027221033|
-|Bintang Ryan Wardana|5027221036|
-|Zidny Ilman Nafian|5027221039|
+|Bintang Ryan Wardana|5027221022|
+|Zidny Ilman Nafian|5027221072|
 
 ---
 
