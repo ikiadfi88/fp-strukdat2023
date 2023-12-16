@@ -12,9 +12,10 @@
 
 ---
 
-**A. PROBLEM**
+A. PROBLEM
     Program Cafe Order System dirancang untuk menangani permasalahan manajemen pesanan di sebuah kafe. Dengan menyediakan fungsionalitas seperti penambahan pesanan baru, antrian pesanan, dan pemrosesan pesanan, program ini memungkinkan kafe untuk secara efisien mengelola pesanan pelanggan. Manajemen menu yang terintegrasi memungkinkan identifikasi hubungan antara pesanan dan item-menu, sementara antarmuka pengguna sederhana memberikan kemudahan dalam penggunaan program. Dengan implementasi ini, program memberikan solusi terstruktur untuk meningkatkan efisiensi dan akurasi dalam operasional sehari-hari kafe.
-**A. OVERVIEW PROGRAM**
+    
+A. OVERVIEW PROGRAM
     Program Cafe Order System ini merupakan implementasi sederhana untuk manajemen pesanan di sebuah kafe. Program ini menggunakan konsep hierarki kelas dengan menggunakan pola desain komposit untuk merepresentasikan menu dan pesanan. Program juga memiliki struktur data antrian untuk mengelola pesanan yang harus diproses. Program memberikan fungsionalitas seperti penambahan pesanan, tampilan daftar pesanan, tampilan antrian pesanan, dan pemrosesan pesanan. Antarmuka pengguna sederhana diberikan melalui konsol dengan opsi untuk menambah pesanan, menampilkan pesanan, memproses pesanan, dan keluar dari program.
     
 ```c++
