@@ -19,12 +19,12 @@
     Program Cafe Order System ini merupakan implementasi sederhana untuk manajemen pesanan di sebuah kafe. Program ini menggunakan konsep hierarki kelas dengan menggunakan pola desain komposit untuk merepresentasikan menu dan pesanan. Program juga memiliki struktur data antrian untuk mengelola pesanan yang harus diproses. Program memberikan fungsionalitas seperti penambahan pesanan, tampilan daftar pesanan, tampilan antrian pesanan, dan pemrosesan pesanan. Antarmuka pengguna sederhana diberikan melalui konsol dengan opsi untuk menambah pesanan, menampilkan pesanan, memproses pesanan, dan keluar dari program. Adapun hal-hal yang diimplementasikan pada program ini yaitu :  
 >1. Implementasi Class, Property, Method, Constructor, Destructor  
 >2. Implementasi Adjacency list / Adjacency Matrix  
-3. Instansiasi Class  
-4. Implementasi Abstract Class  
-5. Implementasi Encapsulation: Public / Private / Protected  
-6. Implementasi Inheritance: Single / Hierarchical / Multilevel  
-7. Implementasi Polymorphism: Overriding dan Overloading  
-8. Implementasi Composition  
+>3. Instansiasi Class  
+>4. Implementasi Abstract Class  
+>5. Implementasi Encapsulation: Public / Private / Protected  
+>6. Implementasi Inheritance: Single / Hierarchical / Multilevel  
+>7. Implementasi Polymorphism: Overriding dan Overloading  
+>8. Implementasi Composition  
     
     
 ```c++
