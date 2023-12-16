@@ -26,7 +26,12 @@
 >7. Implementasi Polymorphism: Overriding dan Overloading  
 >8. Implementasi Composition
 
-**C. PENJELASAN IMPLEMENTASI PADA CODE**
+**C. PENJELASAN IMPLEMENTASI PADA CODE**  
+
+**1. Implementasi Class, Property, Method, Constructor, Destructor**  
+   - Class
+Program ini memiliki 5 class yaitu : MenuComponent, MenuItem, Pesen, MenuGraph, dan CafePesenSystem.
+
 
     
     
