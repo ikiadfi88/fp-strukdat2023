@@ -32,12 +32,10 @@
 **a. Class**  
 Program ini memiliki 5 class yaitu : MenuComponent, MenuItem, Pesen, MenuGraph, dan CafePesenSystem.  
 - Kelas MenuComponent
-   <blockquote>
        Kelas abstrak ini berperan sebagai dasar untuk item menu dan pesanan.
        Fungsi Utama:
        infoMamin(): Fungsi virtual murni yang bertujuan menampilkan informasi dari item menu atau pesanan.
        infoHarga(): Fungsi virtual murni yang mengembalikan nilai harga dari item menu atau pesanan.
-   </blockquote>
 
 
 7. Polimorfisme adalah konsep dalam pemrograman berorientasi objek di mana suatu objek dapat berperilaku sebagai objek dari kelas lain melalui warisan dan penggantian metode. Pada kode kami terdapat penggunaan overriding sebagai berikut:
