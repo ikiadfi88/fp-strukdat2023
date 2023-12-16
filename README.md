@@ -43,11 +43,7 @@ public:
 ```
 
 - `MenuItem` :
-Mewakili item individu dalam menu.
-Properti & Metode Utama:
-Properti: itemId (ID item), itemNama (nama item), itemHarga (harga item).
-Metode: infoMamin() untuk menampilkan informasi item dan infoHarga() untuk mendapatkan harga item.
-Fungsionalitas: Mencatat informasi tentang setiap item dalam menu.
+Mewakili item individu dalam menu. Memiliki property yaitu itemId (ID item), itemNama (nama item), dan itemHarga (harga item). Memiliki method infoMamin() untuk menampilkan informasi item dan infoHarga() untuk mendapatkan harga item. Class ini berfungsi untuk mencatat informasi tentang setiap item dalam menu.
 ```c++
 class MenuItem : public MenuComponent {
 private:
